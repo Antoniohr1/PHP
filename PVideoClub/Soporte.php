@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class Soporte
+class Soporte 
 {
 
     const IVA = 1.21;
@@ -31,7 +31,6 @@ class Soporte
 
     public function muestraResumen()
     {
-        echo "<br>";
         echo "<i>" . $this->titulo . "</i>";
         echo "<br>" . $this->precio . " (IVA no incluido)";
     }
