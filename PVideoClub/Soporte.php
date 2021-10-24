@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-class Soporte 
+abstract class Soporte 
 {
 
     const IVA = 1.21;
