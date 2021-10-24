@@ -31,5 +31,24 @@ class Cliente{
         }
         return $resultado;
     }
+    public function alquilar(Soporte $s):bool{
+        $alquilar=true;
+         if($this->tieneAlquilado($s)){
+            echo "El cliente ya tiene alquilado el soporte ". $s->nombre;
+            $alquilar=false;
+        }   
+        if($this->maxAlquilerConcurente>3){
+            echo "Este cliente ya tiene el máximo de soportes posibles. Alquileres actuales". $this->maxAlquilerConcurente;
+            $alquilar=false;
+        }else{
+            $numAlqui =$this->getNumSoporteAlquilado();
+            $numAlqui++;
+            array_push($soporteAlquilado,$s);
+            echo "Alquilado soporte a ".$this->nombre;
+            echo "<br><br><br>";
+            $s->muestraResumen();
+        }
+        return $alquilar;
+    }
 }
 ?>
