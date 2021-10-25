@@ -76,6 +76,7 @@ class VideoClub{
         $cliente = $this->socios[$numeroCliente];
         $soporte = $this->productos[$numeroSoporte];
         $cliente->alquilar($soporte);
+        return $this;
     }
 
 
