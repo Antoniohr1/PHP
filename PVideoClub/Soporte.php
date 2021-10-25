@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
+include_once "Resumible.php";
 
-abstract class Soporte 
+abstract class Soporte implements Resumible
 {
 
     const IVA = 1.21;

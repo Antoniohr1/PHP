@@ -30,6 +30,8 @@ class Cliente{
                 $resultado=true;
             }
         return $resultado;
+
+        //isset($this->soporteAlquilado[$s->getNumero()]);
     }
 
     public function alquilar(Soporte $s):bool{
@@ -42,6 +44,7 @@ class Cliente{
             $alquilar=false;
         }else{
             $this->numSoporteAlquilado++;
+            //$this->soporteAlquilado[$s->getNumero()]=$s;
             array_push($this->soporteAlquilado,$s);
             echo "<br><br>Alquilado soporte a ".$this->nombre;
             echo "<br><br><br>";
