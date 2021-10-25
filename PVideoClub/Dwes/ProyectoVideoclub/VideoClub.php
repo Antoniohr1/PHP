@@ -1,5 +1,7 @@
 <?php
 declare(strict_types=1);
+namespace Dwes\ProyectoVideoclub;
+
 include_once "Soporte.php";
 include_once "Cliente.php";
 include_once "Juego.php";

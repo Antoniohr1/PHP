@@ -1,5 +1,8 @@
 <?php
-include_once "VideoClub.php"; // No incluimos nada más
+include_once "Dwes\ProyectoVideoclub\VideoClub.php";
+use \Dwes\ProyectoVideoclub\VideoClub;
+
+//include_once "VideoClub.php"; // No incluimos nada más
 
 $vc = new VideoClub("Severo 8A"); 
 

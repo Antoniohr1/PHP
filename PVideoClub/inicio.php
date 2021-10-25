@@ -1,6 +1,7 @@
 <?php
 
-include "Soporte.php";
+include_once("Dwes\ProyectoVideoclub\Soporte.php");
+use \Dwes\ProyectoVideoclub\Soporte;
 
 $soporte1 = new Soporte("Tenet", 22, 3); 
 echo "<strong>" . $soporte1->titulo . "</strong>"; 
