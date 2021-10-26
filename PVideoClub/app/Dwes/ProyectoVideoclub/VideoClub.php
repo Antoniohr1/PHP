@@ -102,6 +102,23 @@ class VideoClub{
         return $this;
     }
 
+    public function alquilarSocioProductos(int $numSocio, array $numerosProducto){
+        $cliente = $this->socios[$numSocio];
+        if (!isset($cliente)){
+            throw new ClientNoEncontradoException("El cliente ". $this->numeroCliente. " no se encuentra disponible");
+        }
+
+        foreach($numerosProducto as $producto){
+            $soporte = $this->productos[$producto->getNumero()];
+
+            if (!isset($soporte)){
+            throw new SoporteNoEncontradoException("El soporte ". $this->numeroSoporte. " no se encuentra disponible");
+            }
+            $this->alquilarSocioProducto($numSocio,$soporte);
+        }
+        
+    }
+
 
 }
 

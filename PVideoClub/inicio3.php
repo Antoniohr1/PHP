@@ -32,4 +32,6 @@ $vc->alquilarSocioProducto(1,2)->alquilarSocioProducto(1,3)->alquilarSocioProduc
 //listo los socios 
 $vc->listarSocios();
 
+$vc->alquilarSocioProductos(1,[0,2,8]);
+
 ?>
