@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-namespace app\Dwes\ProyectoVideoclub;
+namespace Dwes\ProyectoVideoclub;
 
 
 

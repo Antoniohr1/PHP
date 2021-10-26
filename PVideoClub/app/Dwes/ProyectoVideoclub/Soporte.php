@@ -2,17 +2,18 @@
 
 declare(strict_types=1);
 
-namespace app\Dwes\ProyectoVideoclub;
+namespace Dwes\ProyectoVideoclub;
 
-abstract class Soporte implements Resumible
+ class Soporte implements Resumible
 {
 
     const IVA = 1.21;
-
+    
     public function __construct(
         public string $titulo,
         protected int $numero,
-        private float $precio
+        private float $precio,
+        public $alquilado= false
     ) {
     }
 

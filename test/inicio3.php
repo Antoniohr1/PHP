@@ -1,6 +1,6 @@
 <?php
 include ("autoload.php");
-use app\Dwes\ProyectoVideoclub\VideoClub;
+use Dwes\ProyectoVideoclub\VideoClub;
 
 //include_once "VideoClub.php"; // No incluimos nada más
 

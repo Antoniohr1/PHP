@@ -1,19 +1,30 @@
 <?php
 declare(strict_types=1);
-namespace app\Dwes\ProyectoVideoclub;
+namespace Dwes\ProyectoVideoclub;
 
-
+use Dwes\ProyectoVideoclub\Util\SoporteNoEncontradoException;
+use Dwes\ProyectoVideoclub\Util\SoporteYaAlquiladoException;
+use Dwes\ProyectoVideoclub\Util\CupoSuperadoException;
+use Dwes\ProyectoVideoclub\Util\ClientNoEncontradoException;
 class VideoClub{
         private array $productos;
         private int $numProductos=0;
         private array $socios;
         private int $numSocios=0;
+        private int $numProductosAlquilado;
+        private int $numTotalAlquileres;
 
     public function __construct(
         private string $nombre,
     ){
         $this->productos=[];
         $this->socios=[];
+    }
+    public function getNumTotalAlquileres(): int {
+        return $this->numTotalAlquileres;
+    }
+    public function getNumProductosAlquilados(): int {
+        return $this->numProductosAlquilado;
     }
 
     private function incluirProducto(Soporte $s){
@@ -71,9 +82,23 @@ class VideoClub{
     }
 
     public function alquilarSocioProducto(int $numeroCliente, int $numeroSoporte){
-        $cliente = $this->socios[$numeroCliente];
         $soporte = $this->productos[$numeroSoporte];
-        $cliente->alquilar($soporte);
+        if (!isset($soporte)){
+            throw new SoporteNoEncontradoException("El soporte ". $this->numeroSoporte. " no se encuentra disponible");
+        }
+        $cliente = $this->socios[$numeroCliente];
+        if (!isset($cliente)){
+            throw new ClientNoEncontradoException("El cliente ". $this->numeroCliente. " no se encuentra disponible");
+        }
+        
+        try{
+            $cliente->alquilar($soporte); 
+        }catch(SoporteYaAlquiladoException | CupoSuperadoException $e){
+            echo "<br>Se ha producido un error: <br>".$e->getMessage();
+        }
+        
+        
+       
         return $this;
     }
 
