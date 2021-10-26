@@ -2,10 +2,6 @@
 declare(strict_types=1);
 namespace app\Dwes\ProyectoVideoclub;
 
-include("autoload.php");
-use app\Dwes\ProyectoVideoclub\Soporte;
-use SoporteYaAlquiladoException;
-
 class Cliente{
         private array $soporteAlquilado=[];
         private int $numSoporteAlquilado=0;
@@ -33,12 +29,9 @@ class Cliente{
             if (in_array($s,$this->soporteAlquilado)){
                 $resultado=true;
             }
-            try{
+       
                 $resultado=true;
-            }catch(SoporteYaAlquiladoException $e){
-                throw new SoporteYaAlquiladoException("El cliente ya tiene alquilado el soporte",$e);
-                echo $e->getMessage();
-            }
+   
         return $resultado();
 
         //isset($this->soporteAlquilado[$s->getNumero()]);
@@ -48,7 +41,7 @@ class Cliente{
         $alquilar=true;
         
             if($this->tieneAlquilado($s)){
-            echo "<br><br>". $this->tieneAlquilado($s)." ". $s->titulo;
+            echo "<br><br>El cliente ya tiene alquilado el soporte". $s->titulo;
             $alquilar=false;
            }else if($this->maxAlquilerConcurente==$this->numSoporteAlquilado){
             echo "<br><br>Este cliente tiene ". $this->maxAlquilerConcurente ." elementos alquilados. No puede alquilar más en este videoclub hasta que no devuelva algo";

@@ -4,8 +4,7 @@ declare(strict_types=1);
 namespace app\Dwes\ProyectoVideoclub;
 
 
-include("autoload.php");
-use app\Dwes\ProyectoVideoclub\Soporte;
+
 
 class Juego extends Soporte
 {
