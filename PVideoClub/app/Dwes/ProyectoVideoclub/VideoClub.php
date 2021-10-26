@@ -1,12 +1,13 @@
 <?php
 declare(strict_types=1);
-namespace Dwes\ProyectoVideoclub;
+namespace app\Dwes\ProyectoVideoclub;
 
-include_once "Soporte.php";
-include_once "Cliente.php";
-include_once "Juego.php";
-include_once "CintaVideo.php";
-include_once "Dvd.php";
+include("autoload.php");
+use app\Dwes\ProyectoVideoclub\Soporte;
+use app\Dwes\ProyectoVideoclub\Cliente;
+use app\Dwes\ProyectoVideoclub\CintaVideo;
+use app\Dwes\ProyectoVideoclub\Dvd;
+use app\Dwes\ProyectoVideoclub\Juego;
 class VideoClub{
         private array $productos;
         private int $numProductos=0;

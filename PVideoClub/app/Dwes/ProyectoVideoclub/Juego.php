@@ -1,10 +1,11 @@
 <?php
 
 declare(strict_types=1);
-namespace Dwes\ProyectoVideoclub;
+namespace app\Dwes\ProyectoVideoclub;
 
 
-include_once "Soporte.php";
+include("autoload.php");
+use app\Dwes\ProyectoVideoclub\Soporte;
 
 class Juego extends Soporte
 {

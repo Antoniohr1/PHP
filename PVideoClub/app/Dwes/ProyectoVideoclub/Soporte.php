@@ -1,8 +1,9 @@
 <?php
 
 declare(strict_types=1);
-namespace Dwes\ProyectoVideoclub;
 
+namespace app\Dwes\ProyectoVideoclub;
+include("autoload.php");
 include_once "Resumible.php";
 
 abstract class Soporte implements Resumible

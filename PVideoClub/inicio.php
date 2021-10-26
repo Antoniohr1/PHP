@@ -1,7 +1,7 @@
 <?php
 
-include_once("Dwes\ProyectoVideoclub\Soporte.php");
-use \Dwes\ProyectoVideoclub\Soporte;
+include ("autoload.php");
+use app\Dwes\ProyectoVideoclub\Soporte;
 
 $soporte1 = new Soporte("Tenet", 22, 3); 
 echo "<strong>" . $soporte1->titulo . "</strong>"; 
@@ -13,7 +13,8 @@ echo "<br>";
 echo "<br>";
 
 
-include "CintaVideo.php";
+
+use app\Dwes\ProyectoVideoclub\CintaVideo;
 
 $miCinta = new CintaVideo("Los cazafantasmas", 23, 3.5, 107); 
 echo "<strong>" . $miCinta->titulo . "</strong>"; 
@@ -25,7 +26,7 @@ echo "<br>";
 echo "<br>";
 
 
-include "Dvd.php";
+use app\Dwes\ProyectoVideoclub\Dvd;
 
 $miDvd = new Dvd("Origen", 24, 15, "es,en,fr", "16:9");
 echo "<strong>" . $miDvd->titulo . "</strong>";
@@ -36,7 +37,8 @@ $miDvd->muestraResumen();
 echo "<br>";
 echo "<br>";
 
-include "Juego.php";
+
+use app\Dwes\ProyectoVideoclub\Juego;
 
 $miJuego = new Juego("The Last of Us Part II", 26, 49.99, "PS4", 1, 1);
 echo "<strong>" . $miJuego->titulo . "</strong>";
