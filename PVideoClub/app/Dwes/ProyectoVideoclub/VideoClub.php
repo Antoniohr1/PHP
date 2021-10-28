@@ -108,15 +108,17 @@ class VideoClub{
             throw new ClientNoEncontradoException("El cliente ". $this->numeroCliente. " no se encuentra disponible");
         }
 
-        foreach($numerosProducto as $producto){
-            $soporte = $this->productos[$producto->getNumero()];
+        foreach($numerosProducto as $numero){
+            $soporte = $this->productos[$numero];
 
             if (!isset($soporte)){
-            throw new SoporteNoEncontradoException("El soporte ". $this->numeroSoporte. " no se encuentra disponible");
+            throw new SoporteNoEncontradoException("El soporte ". $numero. " no se encuentra disponible");
             }
-            $this->alquilarSocioProducto($numSocio,$soporte);
         }
-        
+
+        foreach($numerosProducto as $numero){
+            $this->alquilarSocioProducto($numSocio,$numero);
+        }
     }
 
 
