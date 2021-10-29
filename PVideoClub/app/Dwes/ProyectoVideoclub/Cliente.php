@@ -82,10 +82,10 @@ class Cliente
         }
 
         if ($resultado == false) {
-            throw new SoporteNoEncontradoException("El soporte " . $numSoporte . " no se encuentra disponible");
+            throw new SoporteNoEncontradoException("<br>El soporte " . $numSoporte . " no se encuentra disponible");
         } else {
             $this->numSoporteAlquilado--;
-            echo "<br><br>EL cliente ha devuelto el soporte número " . $numSoporte . ". Actualmente tiene " . $this->numSoporteAlquilado . " soportes alquilados";
+            echo "<br><br>El cliente ha devuelto el soporte número " . $numSoporte . ". Actualmente tiene " . $this->numSoporteAlquilado . " soportes alquilados";
         }
         return $resultado;
     }

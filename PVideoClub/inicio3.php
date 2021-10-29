@@ -42,7 +42,7 @@ $vc->alquilarSocioProductos(0,[0,2,4]);
 
 
 try{
-    $vc->devolverSocioProducto(0,0);
+    $vc->devolverSocioProducto(1,3);
     }catch(VideoClubException $e){
         echo $e->getMessage();
     }
