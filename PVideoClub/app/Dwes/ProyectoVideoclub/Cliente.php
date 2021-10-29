@@ -57,7 +57,8 @@ class Cliente
         } else {
             $this->numSoporteAlquilado++;
             //$this->soporteAlquilado[$s->getNumero()]=$s;
-            array_push($this->soporteAlquilado, $s);
+            //array_push($this->soporteAlquilado, $s);
+            $this->soporteAlquilado[$s->getNumero()]=$s;
             $s->alquilado = true;
             echo "<br><br>Alquilado soporte a " . $this->nombre;
             echo "<br><br><br>";
@@ -72,16 +73,16 @@ class Cliente
     public function devolver(int $numSoporte): bool
     {
         $resultado = false;
-        foreach ($this->soporteAlquilado as $soporte) {
-            if ($soporte->getNumero() == $numSoporte) {
+        foreach ($this->soporteAlquilado as $indice=>$soporte) {
+            if ($indice == $numSoporte) {
                 $resultado = true;
-                //unset($this->soporteAlquilado,$soporte);
+                unset($this->soporteAlquilado[$numSoporte]);
                 $soporte->alquilado = false;
             }
         }
 
         if ($resultado == false) {
-            throw new SoporteNoEncontradoException("El soporte " . $this->numeroSoporte . " no se encuentra disponible");
+            throw new SoporteNoEncontradoException("El soporte " . $numSoporte . " no se encuentra disponible");
         } else {
             $this->numSoporteAlquilado--;
             echo "<br><br>EL cliente ha devuelto el soporte número " . $numSoporte . ". Actualmente tiene " . $this->numSoporteAlquilado . " soportes alquilados";

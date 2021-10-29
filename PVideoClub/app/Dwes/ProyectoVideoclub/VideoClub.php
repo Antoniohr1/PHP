@@ -28,7 +28,8 @@ class VideoClub{
     }
 
     private function incluirProducto(Soporte $s){
-        array_push($this->productos, $s);
+        //array_push($this->productos, $s);
+        $this->productos[$this->numProductos]=$s;
         echo "Incluido soporte ".$this->numProductos. "<br>";
         $this->numProductos++;
     }
@@ -50,7 +51,8 @@ class VideoClub{
 
     public function incluirSocio(string $nombre, int $maxAlquileresConsurrentes=3){
         $socio = new Cliente($nombre,$this->numSocios, $maxAlquileresConsurrentes);
-        array_push($this->socios, $socio);
+        //array_push($this->socios, $socio);
+        $this->socios[$this->numSocios]=$socio;
         echo "<br>";
         echo "Incluido Socio " . $this->numSocios. "<br>";
         $this->numSocios++;
@@ -96,8 +98,6 @@ class VideoClub{
         }catch(SoporteYaAlquiladoException | CupoSuperadoException $e){
             echo "<br>Se ha producido un error: <br>".$e->getMessage();
         }
-        
-        
        
         return $this;
     }
@@ -112,7 +112,7 @@ class VideoClub{
             $soporte = $this->productos[$numero];
 
             if (!isset($soporte)){
-            throw new SoporteNoEncontradoException("El soporte ". $numero. " no se encuentra disponible");
+            throw new SoporteNoEncontradoException("El soporte ". $numero. " no se encuentra disponible.No se puede hacer la devolución");
             }
         }
 
@@ -122,6 +122,46 @@ class VideoClub{
     }
 
 
+    public function devolverSocioProducto(int $numSocio, int $numeroProducto){
+        $soporte = $this->productos[$numeroProducto];
+        if (!isset($soporte)){
+            throw new SoporteNoEncontradoException("El soporte ". $this->numeroProducto. " no se encuentra disponible");
+        }
+        $cliente = $this->socios[$numSocio];
+        if (!isset($cliente)){
+            throw new ClientNoEncontradoException("El cliente ". $this->numSocio. " no se encuentra disponible");
+        }
+        
+        try{
+            $cliente->devolver($numeroProducto); 
+        }catch(SoporteYaAlquiladoException | ClientNoEncontradoException $e){
+            echo "<br>Se ha producido un error: <br>".$e->getMessage();
+        }
+       
+        return $this;
+    }
+
+
+    public function devolverSocioProductos(int $numSocio, array $numerosProductos){
+        $cliente = $this->socios[$numSocio];
+        if (!isset($cliente)){
+            throw new ClientNoEncontradoException("El cliente ". $this->numeroCliente. " no se encuentra disponible");
+        }
+
+        foreach($numerosProductos as $numero){
+            $soporte = $this->productos[$numero];
+
+            if (!isset($soporte)){
+            throw new SoporteNoEncontradoException("El soporte ". $numero. " no se encuentra disponible.No se puede hacer la devolución");
+            }
+        }
+
+        foreach($numerosProductos as $numero){
+            $this->devolverSocioProducto($numSocio,$numero);
+        }
+        
+        return $this;
+    }
 }
 
 

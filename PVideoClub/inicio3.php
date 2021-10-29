@@ -1,6 +1,8 @@
 <?php
 
 include ("vendor/autoload.php");
+
+use Dwes\ProyectoVideoclub\Util\VideoClubException;
 use Dwes\ProyectoVideoclub\VideoClub;
 
 $vc = new VideoClub("Severo 8A"); 
@@ -32,6 +34,23 @@ $vc->alquilarSocioProducto(1,2)->alquilarSocioProducto(1,3)->alquilarSocioProduc
 //listo los socios 
 $vc->listarSocios();
 
-$vc->alquilarSocioProductos(0,[0,2,8]);
+try{
+$vc->alquilarSocioProductos(0,[0,2,4]);
+}catch(VideoClubException $e){
+    echo $e->getMessage();
+}
 
+
+try{
+    $vc->devolverSocioProducto(0,0);
+    }catch(VideoClubException $e){
+        echo $e->getMessage();
+    }
+    
+    try{
+        $vc->devolverSocioProductos(0,[0,2,4]);
+        }catch(VideoClubException $e){
+            echo $e->getMessage();
+        }
+        
 ?>
