@@ -17,13 +17,13 @@ $vc->incluirCintaVideo("Los cazafantasmas", 3.5, 107);
 $vc->incluirCintaVideo("El nombre de la Rosa", 1.5, 140); 
 
 //listo los productos 
-$vc->listarProductos(); 
+//$vc->listarProductos(); 
 
 //voy a crear algunos socios 
 $vc->incluirSocio("Amancio Ortega"); 
 $vc->incluirSocio("Pablo Picasso", 2); 
 
-$vc->alquilarSocioProducto(1,2)->alquilarSocioProducto(1,3)->alquilarSocioProducto(1,2)->alquilarSocioProducto(1,6); 
+/*$vc->alquilarSocioProducto(1,2)->alquilarSocioProducto(1,3)->alquilarSocioProducto(1,2)->alquilarSocioProducto(1,6); 
 //alquilo otra vez el soporte 2 al socio 1. 
 // no debe dejarme porque ya lo tiene alquilado 
 //$vc->alquilarSocioProducto(1,2); 
@@ -51,6 +51,6 @@ try{
         $vc->devolverSocioProductos(0,[0,2,4]);
         }catch(VideoClubException $e){
             echo $e->getMessage();
-        }
+        }*/
         
 ?>
