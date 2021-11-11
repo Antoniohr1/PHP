@@ -1,28 +1,18 @@
 <?php
     if(!isset($_SESSION)) {
         session_start();
+        
     }
-
-    $soportes = $_SESSION["soportes"];
-    $listaSoportes = "<ul>";
-    foreach($soportes as $sopor){
-        $listaSoportes .= "<li>".$sopor."</li>";
-    }
-    $listaSoportes .= "</ul>";
-
-    $clientes = $_SESSION["clientes"];
-    $listaClientes = "<ul>";
-    foreach($clientes as $clien){
-        $listaClientes .= "<li>".$clien."</li>";
-    }
-    $listaClientes .= "</ul>";
-
-
     if (!isset($_SESSION['admin'])) {
        die("Error - debe <a href='index.php'>identificarse</a>.<br />");
     }
-
-    $datos = $_SESSION["datos"];
+$datos = $_SESSION["datos"];
+    include "$datos";
+   // $usuarioLogeado=$_SESSION['usuarioLogeado']
+   foreach($vc->getSocio() as $usu){
+        $usuarioLogeado=[$usu->getUser()=>$usu->getPassword()];
+}
+    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,12 +27,16 @@
 
 
     <h2>Listado de Soportes</h2>
-    <?=$listaSoportes?>
+    <?=$vc->listarProductos();?>
 
     <h2>Listado de Clientes</h2>
-    <?=$listaClientes?>
+    <?=$vc->listarSocios();?>
 
-
-    
+    <h2>Usuario Logeado</h2>
+    <?php
+            foreach ($usuarioLogeado as $usu){
+                echo "Usuario: ". $usu;
+            }
+    ?>
 </body>
 </html>

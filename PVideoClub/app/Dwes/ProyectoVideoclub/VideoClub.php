@@ -20,6 +20,9 @@ class VideoClub{
         $this->productos=[];
         $this->socios=[];
     }
+    public function getSocio(): array {
+        return $this->socios;
+    }
     public function getNumTotalAlquileres(): int {
         return $this->numTotalAlquileres;
     }
@@ -30,7 +33,7 @@ class VideoClub{
     private function incluirProducto(Soporte $s){
         //array_push($this->productos, $s);
         $this->productos[$this->numProductos]=$s;
-        echo "Incluido soporte ".$this->numProductos. "<br>";
+        //echo "Incluido soporte ".$this->numProductos. "<br>";
         $this->numProductos++;
     }
 
@@ -49,18 +52,18 @@ class VideoClub{
         $this->incluirProducto($juego);
     }
 
-    public function incluirSocio(string $nombre, int $maxAlquileresConsurrentes=3){
-        $socio = new Cliente($nombre,$this->numSocios, $maxAlquileresConsurrentes);
+    public function incluirSocio(string $nombre, string $user, string $password, int $maxAlquileresConsurrentes=3){
+        $socio = new Cliente($nombre,$this->numSocios,$user,$password ,$maxAlquileresConsurrentes);
         //array_push($this->socios, $socio);
         $this->socios[$this->numSocios]=$socio;
-        echo "<br>";
-        echo "Incluido Socio " . $this->numSocios. "<br>";
+       // echo "<br>";
+        //echo "Incluido Socio " . $this->numSocios. "<br>";
         $this->numSocios++;
     }
 
     public function listarProductos(){
         $contador=1;
-        echo "<br><br>";
+        
         echo "Listado de los ".$this->numProductos." productos disponibles<br>";
         foreach($this->productos as $producto){
             echo $contador.".- ";
@@ -72,7 +75,7 @@ class VideoClub{
 
     public function listarSocios(){
         $contador=1;
-        echo "<br><br>";
+  
         echo "Listado de ".$this->numSocios." socios del videoclub<br>";
         foreach($this->socios as $socio){
             echo $contador.".- ";

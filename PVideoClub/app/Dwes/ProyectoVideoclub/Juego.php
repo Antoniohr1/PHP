@@ -2,10 +2,6 @@
 
 declare(strict_types=1);
 namespace Dwes\ProyectoVideoclub;
-
-
-
-
 class Juego extends Soporte
 {
 
@@ -38,6 +34,7 @@ class Juego extends Soporte
     public function muestraResumen()
     {
         echo "Juego para: " . $this->consola;
+        echo "<br>";
         parent::muestraResumen();
         echo "<br>" . $this->muestraJugadoresPosibles();
     }

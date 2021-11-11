@@ -16,8 +16,16 @@ class Cliente
     public function __construct(
         public string $nombre,
         private int $numero,
-        private int $maxAlquilerConcurente = 3
+        private string $user,
+        private string $password,
+        private int $maxAlquilerConcurente
     ) {
+    }
+    public function getUser(){
+        return $this->user;
+    }
+    public function getPassword(){
+        return $this->password;
     }
     public function getNumero()
     {
@@ -33,9 +41,11 @@ class Cliente
     }
     public function muestraResumen()
     {
-        echo "Nombre: " . $this->nombre . "<br> Cantidad de Alquileres: " . count($this->soporteAlquilado);
+        echo "Nombre: " . $this->nombre . "<br> Cantidad de Alquileres: " . count($this->soporteAlquilado)."<br> Usuario".$this->user;
     }
-
+public function muestraUsuario(){
+    echo "<br>Usuario : ".$this->user;
+}
     public function tieneAlquilado(Soporte $s): bool
     {
         $resultado = false;
