@@ -70,9 +70,9 @@ public function muestraUsuario(){
             //array_push($this->soporteAlquilado, $s);
             $this->soporteAlquilado[$s->getNumero()]=$s;
             $s->alquilado = true;
-            echo "<br><br>Alquilado soporte a " . $this->nombre;
+           /* echo "<br><br>Alquilado soporte a " . $this->nombre;
             echo "<br><br><br>";
-            $s->muestraResumen();
+            $s->muestraResumen();*/
         }
 
 
@@ -111,5 +111,8 @@ public function muestraUsuario(){
                 echo "<br><br>";
             }
         }
+    }
+    public function getAlquiler(): array {
+        return $this->soporteAlquilado;
     }
 }
