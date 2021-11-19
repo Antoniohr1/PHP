@@ -25,19 +25,23 @@ $usuario = $_SESSION['usuario'];
 <body>
     <h1>Bienvenido <?= $_SESSION['usuario'] ?></h1>
     <p>Pulse <a href="logout.php">aquí</a> para salir</p>
+    <p>Pulse <a href="formUpdateCliente.php">aquí</a> para modificar un Cliente</p> 
+
 
     <h2>Lista de Alquileres</h2>
     <?php
     $arraySocio = $vc->getSocio();
     foreach ($clientes as $cliente) {
         foreach ($cliente as $usu => $dato) {
-            foreach ($arraySocio as $id=>$socio) {
-                if (($usu == "ID" && $dato == $id) || ($usu == "Usuario" && $usuario == $dato) ) {
-                   $posicion = $id;
-                }
+            if ($usu=="ID") {
+                $id=$dato;
+            }
+            if($usu=="Usuario" && $dato==$usuario){
+                $posicion=$id;
             }
         }
     }
+    
     $alquileresSocio = $arraySocio[$posicion]->getAlquiler();
     foreach ($alquileresSocio as $alquiler) {
         echo $alquiler->muestraResumen();

@@ -23,7 +23,10 @@ $clientes = $_SESSION['cliente'];
 <body>
     <h1>Bienvenido <?= $_SESSION['admin'] ?></h1>
     <p>Pulse <a href="logout.php">aquí</a> para salir</p>
-
+    <p>Pulse <a href="formCreateCliente.php">aquí</a> para añadir un nuevo Cliente</p>   
+    <p>Pulse <a href="formUpdateCliente.php">aquí</a> para modificar un Cliente</p> 
+    <p>Pulse <a href="removeCliente.php">aquí</a> para eliminar un Cliente</p> 
+    
 
     <h2>Listado de Soportes</h2>
     <?php
@@ -41,7 +44,6 @@ $clientes = $_SESSION['cliente'];
     ?>
 
 
-
     <h2>Listado de Clientes</h2>
     <?php
     foreach ($clientes as $cliente) {
@@ -56,6 +58,7 @@ $clientes = $_SESSION['cliente'];
             
         }
         echo "</ul>";
+        echo "<button onclick="."location.href="."'removeCliente.html'".">Borrar este cliente</button>";
     }
 
 
