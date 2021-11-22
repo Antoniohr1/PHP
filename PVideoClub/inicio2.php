@@ -1,6 +1,6 @@
 <?php
 
-include ("vendor/autoload.php");
+include __DIR__ ."../../../vendor/autoload.php";
 use Dwes\ProyectoVideoclub\CintaVideo;
 use Dwes\ProyectoVideoclub\Dvd;
 use Dwes\ProyectoVideoclub\Juego;
