@@ -10,12 +10,13 @@ class CintaVideo extends Soporte
 {
 
     public function __construct(
+        string $metacritic,
         string $titulo,
         int $numero,
         float $precio,
         private int $duracion
     ) {
-        parent::__construct($titulo, $numero, $precio);
+        parent::__construct($metacritic,$titulo, $numero, $precio);
     }
 
 
@@ -24,5 +25,21 @@ class CintaVideo extends Soporte
         echo "Película en VHS: ";
         parent::muestraResumen();
         echo "<br>Duración: " . $this->duracion . " minutos";
+    }
+
+    public function getPuntuacion()
+    {
+        require 'vendor/autoload.php';
+
+        $httpClient = new \Goutte\Client();
+        $response = $httpClient->request('GET', $metacritic);
+        $puntuacion = "";
+
+        $response->filter(".metascore_w larger tvshow mixed")->each(
+            // le pasamos $precios por referencia para poder editarla dentro del closure
+            function ($node) use (&$puntuacion) {
+                $puntuacion = $node->text();
+            }
+        );
     }
 }

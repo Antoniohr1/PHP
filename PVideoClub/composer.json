@@ -1,0 +1,27 @@
+{
+    "name": "dwes/monologos",
+    "description": "Ejercicio 501",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Antonio David Cruz",
+            "email": "andavido150@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^2.3",
+        "fabpot/goutte": "^4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dwes\\ProyectoVideoclub\\": "app/Dwes/ProyectoVideoclub"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --testdox --colors tests"
+    }
+}

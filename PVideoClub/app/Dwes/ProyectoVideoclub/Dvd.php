@@ -9,13 +9,14 @@ class Dvd extends Soporte
 {
 
     public function __construct(
+        string $metacritic,
         string $titulo,
         int $numero,
         float $precio,
         public string $idiomas,
         private string $formatPantalla
     ) {
-        parent::__construct($titulo, $numero, $precio);
+        parent::__construct($metacritic,$titulo, $numero, $precio);
     }
 
 
@@ -25,5 +26,21 @@ class Dvd extends Soporte
         parent::muestraResumen();
         echo "<br>Idiomas : " . $this->idiomas;
         echo "<br>Formato Pantalla: " . $this->formatPantalla;
+    }
+
+    public function getPuntuacion()
+    {
+        require 'vendor/autoload.php';
+
+        $httpClient = new \Goutte\Client();
+        $response = $httpClient->request('GET', $metacritic);
+        $puntuacion = "";
+
+        $response->filter(".metascore_w larger movie positive")->each(
+            // le pasamos $precios por referencia para poder editarla dentro del closure
+            function ($node) use (&$puntuacion) {
+                $puntuacion = $node->text();
+            }
+        );
     }
 }

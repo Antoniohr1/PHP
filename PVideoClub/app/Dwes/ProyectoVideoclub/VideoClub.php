@@ -52,21 +52,21 @@ class VideoClub
         $this->numProductos++;
     }
 
-    public function incluirCintaVideo(string $titulo, float $precio, int $duracion)
+    public function incluirCintaVideo(string $metacritic, string $titulo, float $precio, int $duracion)
     {
-        $cintaVideo = new CintaVideo($titulo, $this->numProductos, $precio, $duracion);
+        $cintaVideo = new CintaVideo($metacritic, $titulo, $this->numProductos, $precio, $duracion);
         $this->incluirProducto($cintaVideo);
     }
 
-    public function incluirDvd(string $titulo, float $precio, string $idiomas, string $pantalla)
+    public function incluirDvd(string $metacritic,string $titulo, float $precio, string $idiomas, string $pantalla)
     {
-        $DVD = new Dvd($titulo, $this->numProductos, $precio, $idiomas, $pantalla);
+        $DVD = new Dvd($metacritic, $titulo, $this->numProductos, $precio, $idiomas, $pantalla);
         $this->incluirProducto($DVD);
     }
 
-    public function incluirJuego(string $titulo, float $precio, string $consola, int $minJ, int $maxJ)
+    public function incluirJuego(string $metacritic,string $titulo, float $precio, string $consola, int $minJ, int $maxJ)
     {
-        $juego = new Juego($titulo, $this->numProductos, $precio, $consola, $minJ, $maxJ);
+        $juego = new Juego($metacritic, $titulo, $this->numProductos, $precio, $consola, $minJ, $maxJ);
         $this->incluirProducto($juego);
     }
 

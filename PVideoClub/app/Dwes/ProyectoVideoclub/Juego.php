@@ -6,6 +6,7 @@ class Juego extends Soporte
 {
 
     public function __construct(
+        string $metacritic,
         string $titulo,
         int $numero,
         float $precio,
@@ -13,7 +14,7 @@ class Juego extends Soporte
         private int $minNumJugadores,
         private int $maxNumJugadores
     ) {
-        parent::__construct($titulo, $numero, $precio);
+        parent::__construct($metacritic,$titulo, $numero, $precio);
     }
 
     public function muestraJugadoresPosibles(): string
@@ -37,5 +38,21 @@ class Juego extends Soporte
         echo "<br>";
         parent::muestraResumen();
         echo "<br>" . $this->muestraJugadoresPosibles();
+    }
+
+    public function getPuntuacion()
+    {
+        require 'vendor/autoload.php';
+
+        $httpClient = new \Goutte\Client();
+        $response = $httpClient->request('GET', $metacritic);
+        $puntuacion = "";
+
+        $response->filter("span[itemprop='ratingValue']")->each(
+            // le pasamos $precios por referencia para poder editarla dentro del closure
+            function ($node) use (&$puntuacion) {
+                $puntuacion = $node->text();
+            }
+        );
     }
 }

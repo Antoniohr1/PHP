@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Dwes\ProyectoVideoclub;
 
- class Soporte implements Resumible
+ abstract class Soporte implements Resumible
 {
 
     const IVA = 1.21;
     
     public function __construct(
+        private string $metacritic,
         public string $titulo,
         protected int $numero,
         private float $precio,
@@ -37,4 +38,6 @@ namespace Dwes\ProyectoVideoclub;
         echo "<i>" . $this->titulo . "</i>";
         echo "<br>" . $this->precio . " (IVA no incluido)";
     }
+
+    public abstract function getPuntuacion();
 }
