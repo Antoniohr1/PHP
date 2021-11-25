@@ -8,7 +8,7 @@ $edad=[];
 $nombre=[];
 
 for($i=0;$i<=17;$i++){
-    $response->filter("#_ctl0_plantillaListView_ctrl".$i."_nombreTd")->each(
+    $response->filter("#_ctl1_plantillaListView_ctrl".$i."_nombreTd")->each(
         // le pasamos $precios por referencia para poder editarla dentro del closure
         function ($node) use (&$nombre) {
             $nombre[] = $node->text();
@@ -17,7 +17,7 @@ for($i=0;$i<=17;$i++){
 }
 
 for($i=0;$i<=17;$i++){
-    $response->filter("#_ctl0_plantillaListView_ctrl".$i."_alturaTd")->each(
+    $response->filter("#_ctl1_plantillaListView_ctrl".$i."_alturaTd")->each(
         // le pasamos $precios por referencia para poder editarla dentro del closure
         function ($node) use (&$altura) {
             $altura[] = $node->text();
@@ -26,7 +26,7 @@ for($i=0;$i<=17;$i++){
 }
 
 for($i=0;$i<=17;$i++){
-    $response->filter("#_ctl0_plantillaListView_ctrl".$i."_edadTd")->each(
+    $response->filter("#_ctl1_plantillaListView_ctrl".$i."_edadTd")->each(
         // le pasamos $precios por referencia para poder editarla dentro del closure
         function ($node) use (&$edad) {
             $edad[] = $node->text();

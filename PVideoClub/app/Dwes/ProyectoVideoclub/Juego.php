@@ -45,14 +45,17 @@ class Juego extends Soporte
         require 'vendor/autoload.php';
 
         $httpClient = new \Goutte\Client();
-        $response = $httpClient->request('GET', $metacritic);
-        $puntuacion = "";
+        $response = $httpClient->request('GET', $this->metacritic);
+        $puntuacion = [];
 
-        $response->filter("span[itemprop='ratingValue']")->each(
+        $response->filter("a.metascore_anchor  span[itemprop='ratingValue']")->each(
             // le pasamos $precios por referencia para poder editarla dentro del closure
             function ($node) use (&$puntuacion) {
-                $puntuacion = $node->text();
+                $puntuacion[] = $node->text();
             }
         );
+        foreach($puntuacion as $punt){
+            echo "Puntuación metacritic: ". $punt."<br>";
+        }
     }
 }

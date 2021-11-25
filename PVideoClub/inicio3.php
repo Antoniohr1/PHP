@@ -11,7 +11,7 @@ $vc = new VideoClub("Severo 8A");
 //voy a incluir unos cuantos soportes de prueba 
 $vc->incluirJuego("https://www.metacritic.com/game/playstation-4/god-of-war", "God of War", 19.99, "PS4", 1, 1);
 $vc->incluirJuego("https://www.metacritic.com/game/playstation-4/the-last-of-us-part-ii", "The Last of Us Part II", 49.99, "PS4", 1, 1);
-$vc->incluirDvd("https://www.metacritic.com/game/pc/torrente", "Torrente", 4.5, "es", "16:9");
+$vc->incluirDvd("https://www.metacritic.com/movie/inception", "Torrente", 4.5, "es", "16:9");
 $vc->incluirDvd("https://www.metacritic.com/movie/inception", "Origen", 4.5, "es,en,fr", "16:9");
 $vc->incluirDvd("https://www.metacritic.com/movie/star-wars-episode-v---the-empire-strikes-back", "El Imperio Contraataca", 3, "es,en", "16:9");
 $vc->incluirCintaVideo("https://www.metacritic.com/movie/ghostbusters", "Los cazafantasmas", 3.5, 107);
@@ -40,6 +40,18 @@ try {
     $vc->alquilarSocioProductos(1, [1, 3, 5]);
 } catch (VideoClubException $e) {
     echo $e->getMessage();
+}
+
+$socios= $vc->getSocio();
+
+foreach($socios as $socio){
+
+    foreach($socio->getAlquiler() as $soporte){
+        $soporte->muestraResumen();
+        echo "<br>";
+        $soporte->getPuntuacion();
+        echo "<br>";
+    }    
 }
 
 

@@ -10,7 +10,7 @@ namespace Dwes\ProyectoVideoclub;
     const IVA = 1.21;
     
     public function __construct(
-        private string $metacritic,
+        public string $metacritic,
         public string $titulo,
         protected int $numero,
         private float $precio,
